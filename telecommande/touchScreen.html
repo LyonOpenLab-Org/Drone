@@ -35,7 +35,7 @@ function update() {
 		canvas.height = h;
 	}
 
-	ctx.clearRect(0, 0, w, h);
+	drawBackground();
 
 	var i, len = touches.length;
 	for (i=0; i<len; i++) {
@@ -58,6 +58,10 @@ function update() {
 	updateStarted = false;
 }
 
+function drawBackground() {
+	ctx.clearRect(0, 0, w, h);
+}
+
 function ol() {
 	canvas = document.getElementById('canvas');
 	ctx = canvas.getContext('2d');
@@ -77,12 +81,12 @@ if(  touches.length>0){
 });
 
 canvas.addEventListener('mouseup', function() {
-	ctx.clearRect(0, 0, w, h);
+	drawBackground();
   touches =[ ];
 });
 
 canvas.addEventListener('touchend', function() {
-	ctx.clearRect(0, 0, w, h);
+	drawBackground();
   touches =[ ];
 });
 canvas.addEventListener('touchmove', function(event) {
