@@ -17,11 +17,18 @@ var h = 0;
 var timer;
 var updateStarted = false;
 var touches = [];
+var left=false;
+var right=false;
+var draw=false;
 
 
 function update() {
   if (updateStarted) return;
 	updateStarted = true;
+	left=false;
+	right=false;
+	draw=false;
+
 
 	var nw = window.innerWidth;
 	var nh = window.innerHeight;
@@ -42,7 +49,16 @@ function update() {
 		var touch = touches[i];
     var px = touch.pageX;
     var py = touch.pageY;
+    if(!left && px<w/2) {
+    	left=true;
+    	draw=true;
 
+
+    }else     if(!right && px>w/2) {
+    	right=true;
+    	draw=true;
+    }
+    if(draw){
 		ctx.beginPath();
 		ctx.arc(px, py, 20, 0, 2*Math.PI, true);
 
@@ -53,6 +69,7 @@ function update() {
 		ctx.strokeStyle = "rgba(0, 0, 200, 0.8)";
 		ctx.stroke();
     console.log('drawn circle at ' + px +',' + py);
+    }
 	}
 
 	updateStarted = false;
