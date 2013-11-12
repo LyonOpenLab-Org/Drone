@@ -9,7 +9,8 @@ canvas { border: 1px solid black; }
 </style>
 <script type="text/javascript">
 
-var canvas;
+var canvasLeft;
+var canvasRight;
 var ctx;
 var w = 0;
 var h = 0;
@@ -27,12 +28,16 @@ function update() {
 	var nh = window.innerHeight;
 
 	if ((w != nw) || (h != nh)) {
-		w = nw;
+		w = nw/2;
 		h = nh;
-		canvas.style.width = w+'px';
-		canvas.style.height = h+'px';
-		canvas.width = w;
-		canvas.height = h;
+		canvasLeft.style.width = w+'px';
+		canvasLeft.style.height = h+'px';
+		canvasLeft.width = w;
+		canvasLeft.height = h;
+		canvasRight.style.width = w+'px';
+		canvasRight.style.height = h+'px';
+		canvasRight.width = w;
+		canvasRight.height = h;
 	}
 
 	ctx.clearRect(0, 0, w, h);
@@ -99,7 +104,9 @@ canvas.addEventListener('touchstart', function(event) {
 </head>
 <body onload="ol()">
 	
-<canvas id="canvas" width="300" height="300" style="top:0px; left:0px; width: 300px; height: 300px;"></canvas>
+<canvas id="canvasLeft" width="300" height="300" style="top:0px; left:0px; width: 300px; height: 300px;"></canvas>
+	
+<canvas id="canvasRight" width="300" height="300" style="top:0px; left:0px; width: 300px; height: 300px;"></canvas>
 
 </body>
 </html>
