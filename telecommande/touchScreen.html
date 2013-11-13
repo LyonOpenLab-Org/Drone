@@ -66,17 +66,20 @@ function update() {
     }
     if(draw){
 		ctx.beginPath();
-		ctx.lineWidth = 2.0;
-		ctx.moveTo(x+1, h/2+1);
-		ctx.lineTo(px-19, py-19);
-		ctx.lineTo(px+19, py+19);
-		ctx.lineTo(x+1, h/2+1);
+		ctx.lineJoin = "round";
+		ctx.lineCap = "round";
+		ctx.lineWidth = 3.0;
+		ctx.moveTo(x+2, h/2+2);
+		ctx.moveTo(x-2, h/2-2);
+		ctx.lineTo(px-15, py-15);
+		ctx.lineTo(px+15, py+15);
+		ctx.lineTo(x+2, h/2+);
 		ctx.strokeStyle = couleur;
 		ctx.stroke();
+		ctx.closePath();
 		ctx.fillStyle = couleur;
 		ctx.fill();
-		ctx.closePath();
-		
+
 		ctx.beginPath();
 		ctx.arc(px, py, 20, 0, 2*Math.PI, true);
 		ctx.fillStyle = couleur;
