@@ -66,16 +66,35 @@ function update() {
     }
     if(draw){
 		ctx.beginPath();
-		ctx.arc(x, h/2, 3, 0, 2*Math.PI, true);
-		ctx.arc(px, py, 20, 0, 2*Math.PI, true);
-
+		ctx.lineWidth = 2.0;
+		ctx.moveTo(x+1, h/2+1);
+		ctx.lineTo(px-19, py-19);
+		ctx.lineTo(px+19, py+19);
+		ctx.lineTo(x+1, h/2+1);
+		ctx.strokeStyle = couleur;
+		ctx.stroke();
 		ctx.fillStyle = couleur;
 		ctx.fill();
-
+		ctx.closePath();
+		
+		ctx.beginPath();
+		ctx.arc(px, py, 20, 0, 2*Math.PI, true);
+		ctx.fillStyle = couleur;
+		ctx.fill();
 		ctx.lineWidth = 2.0;
 		ctx.strokeStyle = "rgba(0, 0, 200, 0.8)";
 		ctx.stroke();
-    console.log('drawn circle at ' + px +',' + py);
+		ctx.closePath();
+		
+		ctx.beginPath();
+		ctx.arc(x, h/2, 3, 0, 2*Math.PI, true);
+		ctx.fillStyle = couleur;
+		ctx.fill();
+		ctx.lineWidth = 2.0;
+		ctx.strokeStyle = "rgba(0, 0, 200, 0.8)";
+		ctx.stroke();
+		ctx.closePath();
+    //console.log('drawn circle at ' + px +',' + py);
     }
 	}
 
