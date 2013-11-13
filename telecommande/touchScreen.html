@@ -18,8 +18,10 @@ var timer;
 var updateStarted = false;
 var touches = [];
 var left=false;
+var left=false;
 var right=false;
 var draw=false;
+var couleur;
 
 
 function update() {
@@ -28,7 +30,7 @@ function update() {
 	left=false;
 	right=false;
 	draw=false;
-
+	couleur="rgba(0, 0, 200, 0.2)";
 
 	var nw = window.innerWidth;
 	var nh = window.innerHeight;
@@ -52,17 +54,18 @@ function update() {
     if(!left && px<w/2) {
     	left=true;
     	draw=true;
+	couleur="rgba(200, 0, 0, 0.2)";
 
-
-    }else     if(!right && px>w/2) {
+    }else if(!right && px>w/2) {
     	right=true;
     	draw=true;
+	couleur="rgba(0, 200, 0, 0.2)";
     }
     if(draw){
 		ctx.beginPath();
 		ctx.arc(px, py, 20, 0, 2*Math.PI, true);
 
-		ctx.fillStyle = "rgba(0, 0, 200, 0.2)";
+		ctx.fillStyle = couleur;
 		ctx.fill();
 
 		ctx.lineWidth = 2.0;
