@@ -31,7 +31,7 @@ function update() {
 	left=false;
 	right=false;
 	draw=false;
-	couleur="rgba(0, 0, 200, 0.2)";
+	couleur="rgba(0, 0, 200, 1)";
 
 	var nw = window.innerWidth;
 	var nh = window.innerHeight;
@@ -55,13 +55,13 @@ function update() {
     if(!left && px<w/2) {
     	left=true;
     	draw=true;
-	couleur="rgba(200, 0, 0, 0.2)";
+	couleur="rgba(200, 0, 0, 1)";
 	x=w/4;
 
     }else if(!right && px>w/2) {
     	right=true;
     	draw=true;
-	couleur="rgba(0, 200, 0, 0.2)";
+	couleur="rgba(0, 200, 0, 1)";
 	x=w/4*3;
     }
     if(draw){
@@ -85,7 +85,7 @@ function update() {
 		ctx.fillStyle = couleur;
 		ctx.fill();
 		ctx.lineWidth = 2.0;
-		ctx.strokeStyle = "rgba(0, 0, 200, 0.8)";
+		ctx.strokeStyle = couleur;
 		ctx.stroke();
 		ctx.closePath();
 		
@@ -94,7 +94,7 @@ function update() {
 		ctx.fillStyle = couleur;
 		ctx.fill();
 		ctx.lineWidth = 2.0;
-		ctx.strokeStyle = "rgba(0, 0, 200, 0.8)";
+		ctx.strokeStyle = couleur;
 		ctx.stroke();
 		ctx.closePath();
     //console.log('drawn circle at ' + px +',' + py);
