@@ -63,6 +63,7 @@ function update() {
     }
     if(draw){
 		ctx.beginPath();
+		ctx.arc(w/4, h/2, 3, 0, 2*Math.PI, true);
 		ctx.arc(px, py, 20, 0, 2*Math.PI, true);
 
 		ctx.fillStyle = couleur;
