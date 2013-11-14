@@ -10,18 +10,56 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<platform.version> 4.1.1.4
-			</platform.version>
-		<android.plugin.version>3.6.0</android.plugin.version>
+		<android.plugin.version>
+		3.6.0
+		</android.plugin.version>
+<!-- Plugins -->
+    <android-maven-plugin.version>
+    3.6.0
+    </android-maven-plugin.version>
+    <maven-compiler-plugin.version>
+    2.3.2
+    </maven-compiler-plugin.version>
+    <api.platform>
+    16
+    </api.platform>
+<!-- Dependencies -->
+    <androidannotations.version>2.7.1</androidannotations.version>
+    <actionBarSherlock.version>4.3.1</actionBarSherlock.version>
+    <android.version>4.1.1.4</android.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.google.android</groupId>
 			<artifactId>android</artifactId>
-			<version>${platform.version}</version>
 			<scope>provided</scope>
+			<version>${android.version}</version>
 		</dependency>
+    <dependency>
+      <groupId>com.googlecode.androidannotations</groupId>
+      <artifactId>androidannotations</artifactId>
+      <version>${androidannotations.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.googlecode.androidannotations</groupId>
+      <artifactId>androidannotations-api</artifactId>
+      <version>${androidannotations.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.actionbarsherlock</groupId>
+      <artifactId>actionbarsherlock</artifactId>
+      <version>${actionBarSherlock.version}</version>
+      <type>apklib</type>
+    </dependency>
+    <dependency>
+      <groupId>com.actionbarsherlock</groupId>
+      <artifactId>actionbarsherlock</artifactId>
+      <version>${actionBarSherlock.version}</version>
+      <type>jar</type>
+      <scope>provided</scope>
+    </dependency>
 	</dependencies>
 	<build>
 		<finalName>${project.artifactId}</finalName>
@@ -30,7 +68,7 @@
 				<plugin>
 					<groupId>com.jayway.maven.plugins.android.generation2</groupId>
 					<artifactId>android-maven-plugin</artifactId>
-					<version>${android.plugin.version}</version>
+					<version>${android-maven-plugin.version}</version>
 					<extensions>true</extensions>
 				</plugin>
 			</plugins>
@@ -41,10 +79,18 @@
 				<artifactId>android-maven-plugin</artifactId>
 				<configuration>
 					<sdk>
-						<platform>16</platform>
+            <platform>${api.platform}</platform>
 					</sdk>
 									</configuration>
 			</plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven-compiler-plugin.version}</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
 		</plugins>
 	</build>
 </project>
